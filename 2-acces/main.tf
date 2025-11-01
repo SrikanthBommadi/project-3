@@ -19,10 +19,10 @@ resource "aws_instance" "bastion" {
         }
     )
 }
+##################
 
-
-
-resource "aws_iam_instance_profile" "bastion" {
-  name = "bastion"
-  role = "BastionTerraformAdmin"
+# 3️⃣ Create Instance Profile                                    # Step 3: Creating profile for EC2 to use
+resource "aws_iam_instance_profile" "bastion" {                 # Creates an EC2 instance profile
+  name = "bastion"                                             # Names the profile "bastion"
+  role = aws_iam_role.bastion_role.name                        # Links to the IAM role created above
 }
